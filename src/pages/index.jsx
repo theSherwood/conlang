@@ -1,7 +1,13 @@
+import { roots, compounds } from "../lang";
+
+let rootsArray = Object.entries(roots);
+let compoundsArray = Object.entries(compounds);
+
 function Index() {
   return (
     <>
-      <h1 className="text-4xl text-white font-bold">Hello there</h1>
+      <h2>Roots: {rootsArray.length}</h2>
+      <h2>Compounds: {compoundsArray.length}</h2>
     </>
   );
 }
