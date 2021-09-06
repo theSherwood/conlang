@@ -52,6 +52,18 @@ let emptyWord = {
 
 let r: RootDictionary;
 
+let grammar: RootDictionary = {
+  subclause: {},
+  transitive: {},
+  intransitive: {}
+};
+
+let pronouns: RootDictionary = {
+  me: {},
+  it: {},
+  they: {}
+};
+
 let numbers: RootDictionary = {
   // TODO: figure out how to handle zero/none
   one: { is: "", tags: [t.Number, t.Root] },
@@ -91,9 +103,18 @@ let timeRoot: RootDictionary = {
 };
 
 let roots: RootDictionary = {
+  ...grammar,
+  ...pronouns,
   ...numbers,
   ...ordinals,
   ...timeRoot,
+
+  yes: {},
+  no: {},
+  maybe: {},
+
+  true: {},
+  false: {},
 
   good: { is: "" },
   bad: { is: "" },
@@ -139,10 +160,66 @@ let roots: RootDictionary = {
   agent: {},
   object: {},
 
-  distinct: {},
   same: {},
+  distinct: {},
+  opposite: {},
 
-  thing: {}
+  begin: {},
+  end: {},
+
+  near: {},
+  far: {},
+
+  smooth: {},
+  rough: {},
+
+  and: {},
+  or: {},
+  xor: {},
+
+  create: {},
+  repair: {},
+  break: {},
+  destroy: {},
+
+  take: {},
+  put: {},
+
+  count: {},
+  iterate: {},
+
+  to: {},
+  from: {},
+
+  through: {},
+  around: {},
+
+  more: {},
+  less: {},
+
+  pleasure: {},
+  pain: {},
+
+  this: {},
+  that: {},
+
+  overt: {},
+  covert: {},
+
+  real: {},
+  model: {},
+  unreal: {},
+
+  static: {},
+  dynamic: {},
+
+  // TODO: organize
+  thing: {},
+  direction: {},
+  obligation: {},
+  work: {},
+  change: {},
+  shape: {}
 };
 r = roots;
 
@@ -169,6 +246,13 @@ let c;
 let compounds: CompoundDictionary = {
   ...timeCompound,
 
+  animal_lesser: {
+    is: () => [r.agent, r.less]
+  },
+  animal_bio: {
+    is: () => [r.agent, r.life]
+  },
+
   marriage: {
     is: () => [r.merge, r.love],
     noun: [""],
@@ -177,6 +261,31 @@ let compounds: CompoundDictionary = {
     adjective: [""],
     adverb: [""],
     tags: [t.Compound]
+  },
+
+  sex_gender: {
+    is: () => [r.male, r.female]
+  },
+  sex_act: {
+    is: () => [r.merge, r.pleasure]
+  },
+  sex_reproduction: {
+    is: () => [r.merge, c.sex_gender]
+  },
+
+  compute: {
+    is: () => [r.work, r.model]
+  },
+  copy: {
+    is: () => [r.create, r.same]
+  },
+
+  normalize: {
+    is: () => [r.change, r.shape, r.same]
+  },
+
+  purpose: {
+    is: () => [r.to, r.end]
   }
 };
 c = compounds;
