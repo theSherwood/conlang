@@ -61,7 +61,7 @@ let grammar: RootDictionary = {
 let pronouns: RootDictionary = {
   me: {},
   it: {},
-  they: {}
+  you: {}
 };
 
 let numbers: RootDictionary = {
@@ -125,6 +125,9 @@ let roots: RootDictionary = {
   none: { is: "" },
   some: { is: "" },
   all: { is: "" },
+
+  few: {},
+  many: {},
 
   merge: { is: "" },
   split: { is: "" },
@@ -193,6 +196,7 @@ let roots: RootDictionary = {
 
   through: {},
   around: {},
+  between: {},
 
   more: {},
   less: {},
@@ -213,15 +217,39 @@ let roots: RootDictionary = {
   static: {},
   dynamic: {},
 
+  corner: {},
+  round: {},
+
+  hard: {},
+  soft: {},
+
   // TODO: organize
   thing: {},
   direction: {},
   obligation: {},
   work: {},
   change: {},
-  shape: {}
+  shape: {},
+  use: {},
+  mark: {},
+  light: {}
 };
 r = roots;
+
+let colors: CompoundDictionary = {
+  red: { is: () => [r.light, r.first] },
+  yellow: { is: () => [r.light, r.second] },
+  blue: { is: () => [r.light, r.third] },
+  orange: { is: () => [r.light, r.first, r.second] },
+  green: { is: () => [r.light, r.second, r.third] },
+  purple: { is: () => [r.light, r.first, r.third] },
+
+  black: { is: () => [r.light, r.none] },
+  white: { is: () => [r.light, r.all] },
+
+  bright: { is: () => [r.light, r.more] },
+  dark: { is: () => [r.light, r.less] }
+};
 
 let timeCompound: CompoundDictionary = {
   yesterday: { tags: [t.Time, t.Compound] },
@@ -244,6 +272,7 @@ let timeCompound: CompoundDictionary = {
 
 let c;
 let compounds: CompoundDictionary = {
+  ...colors,
   ...timeCompound,
 
   animal_lesser: {
