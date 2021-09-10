@@ -53,7 +53,8 @@ let emptyWord = {
 let r: RootDictionary;
 
 let grammar: RootDictionary = {
-  subclause: {},
+  enter_subclause: {},
+  exit_subclause: {},
   transitive: {},
   intransitive: {}
 };
@@ -245,6 +246,7 @@ let colors: CompoundDictionary = {
   purple: { is: () => [r.light, r.first, r.third] },
 
   black: { is: () => [r.light, r.none] },
+  gray: { is: () => [r.light, r.some] },
   white: { is: () => [r.light, r.all] },
 
   bright: { is: () => [r.light, r.more] },
@@ -252,22 +254,22 @@ let colors: CompoundDictionary = {
 };
 
 let timeCompound: CompoundDictionary = {
-  yesterday: { tags: [t.Time, t.Compound] },
-  tomorrow: { tags: [t.Time, t.Compound] },
+  yesterday: { is: () => [r.day, r.next], tags: [t.Time, t.Compound] },
+  tomorrow: { is: () => [r.day, r.prev], tags: [t.Time, t.Compound] },
 
-  next_year: { tags: [t.Time, t.Compound] },
-  yesteryear: { tags: [t.Time, t.Compound] },
+  next_year: { is: () => [r.year, r.next], tags: [t.Time, t.Compound] },
+  yesteryear: { is: () => [r.year, r.prev], tags: [t.Time, t.Compound] },
 
   // TODO: complex tenses
-  present_continuous: { tags: [t.Time, t.Compound] },
-  present_perfect: { tags: [t.Time, t.Compound] },
-  present_perfect_continuous: { tags: [t.Time, t.Compound] },
-  past_continuous: { tags: [t.Time, t.Compound] },
-  past_perfect: { tags: [t.Time, t.Compound] },
-  past_perfect_continuous: { tags: [t.Time, t.Compound] },
-  future_continuous: { tags: [t.Time, t.Compound] },
-  future_perfect: { tags: [t.Time, t.Compound] },
-  future_perfect_continuous: { tags: [t.Time, t.Compound] }
+  present_continuous: { is: () => [], tags: [t.Time, t.Compound] },
+  present_perfect: { is: () => [], tags: [t.Time, t.Compound] },
+  present_perfect_continuous: { is: () => [], tags: [t.Time, t.Compound] },
+  past_continuous: { is: () => [], tags: [t.Time, t.Compound] },
+  past_perfect: { is: () => [], tags: [t.Time, t.Compound] },
+  past_perfect_continuous: { is: () => [], tags: [t.Time, t.Compound] },
+  future_continuous: { is: () => [], tags: [t.Time, t.Compound] },
+  future_perfect: { is: () => [], tags: [t.Time, t.Compound] },
+  future_perfect_continuous: { is: () => [], tags: [t.Time, t.Compound] }
 };
 
 let c;
