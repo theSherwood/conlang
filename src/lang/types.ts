@@ -1,10 +1,10 @@
 interface Word {
-  noun?: string | [string] | [string, Example[]];
-  transitive?: string | [string] | [string, Example[]];
-  intransitive?: string | [string] | [string, Example[]];
-  adjective?: string | [string] | [string, Example[]];
-  adverb?: string | [string] | [string, Example[]];
-  preposition?: string | [string] | [string, Example[]];
+  noun?: string | string[] | [string, Example[]][];
+  transitive?: string | string[] | [string, Example[]][];
+  intransitive?: string | string[] | [string, Example[]][];
+  adjective?: string | string[] | [string, Example[]][];
+  adverb?: string | string[] | [string, Example[]][];
+  preposition?: string | string[] | [string, Example[]][];
   tags?: Tag[];
 }
 

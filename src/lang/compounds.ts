@@ -10,41 +10,14 @@ import { r } from './roots';
 
 let is_c = (id) => id > 1000;
 
+// prettier-ignore
 enum c {
   // Every id over 1000 is a compound
-  red = 1001,
-  yellow,
-  blue,
-  orange,
-  green,
-  purple,
-  black,
-  gray,
-  white,
-  bright,
-  dark,
-  yesterday,
-  tomorrow,
-  next_year,
-  yesteryear,
-  present_continuous,
-  present_perfect,
-  present_perfect_continuous,
-  past_continuous,
-  past_perfect,
-  past_perfect_continuous,
-  future_continuous,
-  future_perfect,
-  future_perfect_continuous,
-  animal_lesser,
-  animal_bio,
-  marriage,
-  sex_gender,
-  sex_act,
-  sex_reproduction,
-  compute,
-  copy,
-  normalize,
+  red = 1001, yellow, blue, orange, green, purple, black, gray, white, bright, dark, 
+  yesterday, tomorrow, next_year, yesteryear, present_continuous, present_perfect, 
+  present_perfect_continuous, past_continuous, past_perfect, past_perfect_continuous, 
+  future_continuous, future_perfect, future_perfect_continuous, animal_lesser, 
+  animal_bio, marriage, sex_gender, sex_act, sex_reproduction, compute, copy, normalize, 
   purpose,
 }
 
@@ -60,8 +33,20 @@ let colors: CompoundDictionary = {
   [c.gray]: { is: [r.light, r.some] },
   [c.white]: { is: [r.light, r.all] },
 
-  [c.bright]: { is: [r.light, r.more] },
-  [c.dark]: { is: [r.light, r.less] },
+  [c.bright]: {
+    is: [r.light, r.more],
+    noun: ['bright thing', 'spark'],
+    transitive: ['to make bright'],
+    intransitive: ['to grow bright'],
+    adjective: ['bright'],
+  },
+  [c.dark]: {
+    is: [r.light, r.less],
+    noun: ['dark thing'],
+    transitive: ['to make dark'],
+    intransitive: ['to grow dark'],
+    adjective: ['dark'],
+  },
 };
 
 let timeCompound: CompoundDictionary = {
@@ -97,33 +82,43 @@ let compounds: CompoundDictionary = {
 
   [c.marriage]: {
     is: [r.merge, r.love],
-    noun: [''],
-    transitive: [''],
+    noun: ['marriage'],
+    transitive: ['to marry'],
     intransitive: [''],
-    adjective: [''],
+    adjective: ['married'],
     adverb: [''],
     tags: [t.Compound],
   },
 
   [c.sex_gender]: {
     is: [r.male, r.female],
+    noun: ['gender', 'sex'],
+    transitive: ['to gender', 'to sex', 'to identify the sex of'],
   },
   [c.sex_act]: {
     is: [r.merge, r.pleasure],
+    transitive: ['to have sex'],
   },
   [c.sex_reproduction]: {
     is: [r.merge, c.sex_gender],
+    transitive: ['to reproduce'],
   },
 
   [c.compute]: {
     is: [r.work, r.model],
+    noun: ['computation'],
+    transitive: ['to compute'],
+    adjective: ['computationally'],
   },
   [c.copy]: {
     is: [r.create, r.same],
+    noun: ['copy', 'clone'],
+    transitive: ['to copy', 'to clone'],
   },
 
   [c.normalize]: {
     is: [r.change, r.shape, r.same],
+    transitive: ['to normalize'],
   },
 
   [c.purpose]: {
