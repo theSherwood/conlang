@@ -1,11 +1,4 @@
-import {
-  Word,
-  Root,
-  Compound,
-  Tag as t,
-  RootDictionary,
-  CompoundDictionary,
-} from './types';
+import { Tag as t, RootDictionary } from './types';
 
 let emptyWord = {
   is: '',
