@@ -18,22 +18,24 @@ function Index() {
   return (
     <>
       <div>
-        <details open>
+        <details>
           <summary>
             <strong>Phonemes: {phonemes.length}</strong>
           </summary>
-          <table>
+          <table class="table-fixed">
             <thead>
-              <For each={[''].concat(consonants1)}>{(c1) => <th>{c1}</th>}</For>
+              <For each={[''].concat(consonants1)}>
+                {(c1) => <th class="px-2">{c1}</th>}
+              </For>
             </thead>
             <tbody>
               <For each={vowels}>
                 {(v) => (
                   <tr>
-                    <th>{v}</th>
+                    <th class="px-2">{v}</th>
                     <For each={consonants1}>
                       {(c1) => (
-                        <td class="bg-black">
+                        <td class="border px-2">
                           <For each={consonants2}>
                             {(c2) => (
                               <span>

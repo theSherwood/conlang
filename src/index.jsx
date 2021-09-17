@@ -1,3 +1,5 @@
+import "windi.css";
+
 import { lazy } from "solid-js";
 import { render } from "solid-js/web";
 import { Router } from "solid-app-router";

@@ -3,10 +3,16 @@ import solidPlugin from 'vite-plugin-solid';
 import WindiCSS from 'vite-plugin-windicss';
 
 export default defineConfig({
-  publicDir: 'src/assets',
-  plugins: [solidPlugin(), WindiCSS()],
-  // build: {
-  //   target: "esnext",
-  //   polyfillDynamicImport: false
-  // }
+  plugins: [
+    solidPlugin(),
+    WindiCSS({
+      scan: {
+        fileExtensions: ["html", "js", "ts", "jsx", "tsx"],
+      },
+    }),
+  ],
+  build: {
+    target: "esnext",
+    polyfillDynamicImport: false,
+  },
 });
