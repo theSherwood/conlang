@@ -5,8 +5,8 @@ import {
   Tag as t,
   RootDictionary,
   CompoundDictionary,
-} from './types';
-import { r } from './roots';
+} from "./types";
+import { r } from "./roots";
 
 let is_c = (id) => id > 1000;
 
@@ -18,7 +18,7 @@ enum c {
   present_perfect_continuous, past_continuous, past_perfect, past_perfect_continuous, 
   future_continuous, future_perfect, future_perfect_continuous, animal_lesser, 
   animal_bio, marriage, sex_gender, sex_act, sex_reproduction, compute, copy, normalize, 
-  purpose,
+  purpose, multiplication, division, exponentiation, subtraction, addition
 }
 
 let colors: CompoundDictionary = {
@@ -35,17 +35,17 @@ let colors: CompoundDictionary = {
 
   [c.bright]: {
     is: [r.light, r.more],
-    noun: ['bright thing', 'spark'],
-    transitive: ['to make bright'],
-    intransitive: ['to grow bright'],
-    adjective: ['bright'],
+    noun: ["bright thing", "spark"],
+    transitive: ["to make bright"],
+    intransitive: ["to grow bright"],
+    adjective: ["bright"],
   },
   [c.dark]: {
     is: [r.light, r.less],
-    noun: ['dark thing'],
-    transitive: ['to make dark'],
-    intransitive: ['to grow dark'],
-    adjective: ['dark'],
+    noun: ["dark thing"],
+    transitive: ["to make dark"],
+    intransitive: ["to grow dark"],
+    adjective: ["dark"],
   },
 };
 
@@ -68,10 +68,18 @@ let timeCompound: CompoundDictionary = {
   [c.future_perfect_continuous]: { is: [], tags: [t.Time, t.Compound] },
 };
 
-// let c;
+let mathCompound: CompoundDictionary = {
+  [c.addition]: {},
+  [c.subtraction]: {},
+  [c.multiplication]: {},
+  [c.division]: {},
+  [c.exponentiation]: {},
+};
+
 let compounds: CompoundDictionary = {
   ...colors,
   ...timeCompound,
+  ...mathCompound,
 
   [c.animal_lesser]: {
     is: [r.agent, r.less],
@@ -82,43 +90,44 @@ let compounds: CompoundDictionary = {
 
   [c.marriage]: {
     is: [r.merge, r.love],
-    noun: ['marriage'],
-    transitive: ['to marry'],
-    intransitive: [''],
-    adjective: ['married'],
-    adverb: [''],
+    noun: ["marriage"],
+    transitive: ["to marry"],
+    intransitive: [""],
+    adjective: ["married"],
+    adverb: [""],
     tags: [t.Compound],
   },
 
   [c.sex_gender]: {
     is: [r.male, r.female],
-    noun: ['gender', 'sex'],
-    transitive: ['to gender', 'to sex', 'to identify the sex of'],
+    noun: ["gender", "sex"],
+    transitive: ["to gender", "to sex", "to identify the sex of"],
   },
   [c.sex_act]: {
     is: [r.merge, r.pleasure],
-    transitive: ['to have sex'],
+    transitive: ["to have sex"],
   },
   [c.sex_reproduction]: {
     is: [r.merge, c.sex_gender],
-    transitive: ['to reproduce'],
+    transitive: ["to reproduce"],
   },
 
   [c.compute]: {
     is: [r.work, r.model],
-    noun: ['computation'],
-    transitive: ['to compute'],
-    adjective: ['computationally'],
+    noun: ["computation"],
+    transitive: ["to compute"],
+    adjective: ["computationally"],
   },
+
   [c.copy]: {
     is: [r.create, r.same],
-    noun: ['copy', 'clone'],
-    transitive: ['to copy', 'to clone'],
+    noun: ["copy", "clone"],
+    transitive: ["to copy", "to clone"],
   },
 
   [c.normalize]: {
     is: [r.change, r.shape, r.same],
-    transitive: ['to normalize'],
+    transitive: ["to normalize"],
   },
 
   [c.purpose]: {

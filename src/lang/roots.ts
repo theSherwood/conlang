@@ -1,13 +1,13 @@
-import { Tag as t, RootDictionary } from './types';
+import { Tag as t, RootDictionary } from "./types";
 
 let emptyWord = {
-  is: '',
-  noun: '',
-  transitive: '',
-  intransitive: '',
-  adjective: '',
-  adverb: '',
-  preposition: '',
+  is: "",
+  noun: "",
+  transitive: "",
+  intransitive: "",
+  adjective: "",
+  adverb: "",
+  preposition: "",
   tags: [],
 };
 
@@ -17,13 +17,13 @@ enum r {
   two, three, four, five, six, seven, eight, nine, zeroth, first, second, third, 
   fourth, fifth, sixth, seventh, eighth, ninth, time, past, present, future, second_time, 
   day, year, yes, no, maybe, true, false, good, bad, simple, complex, none, some, all, 
-  few, many, merge, split, group, part, love, hate, life, death, prev, next, chaos, 
-  order, male, female, neuter, rare, common, open, close, big, small, agent, object, 
-  same, distinct, opposite, begin, end, near, far, smooth, rough, and, or, xor, create, 
+  few, many, merge, split, group, part, connect, branch, love, hate, life, death, prev, 
+  next, chaos, order, male, female, neuter, rare, common, open, close, big, small, agent, 
+  object, same, distinct, opposite, begin, end, near, far, smooth, rough, and, or, xor, create, 
   repair, break, destroy, take, put, count, iterate, to, from, through, around, between, 
   more, less, pleasure, pain, this, that, overt, covert, real, model, unreal, static, 
   dynamic, corner, round, hard, soft, thing, direction, obligation, work, change, shape, 
-  use, mark, light,
+  use, mark, light, which_does, which_receives, participle, noun_swap
 }
 
 let grammar: RootDictionary = {
@@ -31,6 +31,11 @@ let grammar: RootDictionary = {
   [r.exit_subclause]: {},
   [r.transitive]: {},
   [r.intransitive]: {},
+  // suffixes?
+  [r.which_does]: {},
+  [r.which_receives]: {},
+  [r.participle]: {},
+  [r.noun_swap]: {},
 };
 
 let pronouns: RootDictionary = {
@@ -41,40 +46,40 @@ let pronouns: RootDictionary = {
 
 let numbers: RootDictionary = {
   // TODO: figure out how to handle zero/none
-  [r.one]: { is: '', tags: [t.Number, t.Root] },
-  [r.two]: { is: '', tags: [t.Number, t.Root] },
-  [r.three]: { is: '', tags: [t.Number, t.Root] },
-  [r.four]: { is: '', tags: [t.Number, t.Root] },
-  [r.five]: { is: '', tags: [t.Number, t.Root] },
-  [r.six]: { is: '', tags: [t.Number, t.Root] },
-  [r.seven]: { is: '', tags: [t.Number, t.Root] },
-  [r.eight]: { is: '', tags: [t.Number, t.Root] },
-  [r.nine]: { is: '', tags: [t.Number, t.Root] },
+  [r.one]: { is: "", tags: [t.Number, t.Root] },
+  [r.two]: { is: "", tags: [t.Number, t.Root] },
+  [r.three]: { is: "", tags: [t.Number, t.Root] },
+  [r.four]: { is: "", tags: [t.Number, t.Root] },
+  [r.five]: { is: "", tags: [t.Number, t.Root] },
+  [r.six]: { is: "", tags: [t.Number, t.Root] },
+  [r.seven]: { is: "", tags: [t.Number, t.Root] },
+  [r.eight]: { is: "", tags: [t.Number, t.Root] },
+  [r.nine]: { is: "", tags: [t.Number, t.Root] },
 };
 
 let ordinals: RootDictionary = {
-  [r.zeroth]: { is: '', tags: [t.Number, t.Root] },
-  [r.first]: { is: '', tags: [t.Number, t.Root] },
-  [r.second]: { is: '', tags: [t.Number, t.Root] },
-  [r.third]: { is: '', tags: [t.Number, t.Root] },
-  [r.fourth]: { is: '', tags: [t.Number, t.Root] },
-  [r.fifth]: { is: '', tags: [t.Number, t.Root] },
-  [r.sixth]: { is: '', tags: [t.Number, t.Root] },
-  [r.seventh]: { is: '', tags: [t.Number, t.Root] },
-  [r.eighth]: { is: '', tags: [t.Number, t.Root] },
-  [r.ninth]: { is: '', tags: [t.Number, t.Root] },
+  [r.zeroth]: { is: "", tags: [t.Number, t.Root] },
+  [r.first]: { is: "", tags: [t.Number, t.Root] },
+  [r.second]: { is: "", tags: [t.Number, t.Root] },
+  [r.third]: { is: "", tags: [t.Number, t.Root] },
+  [r.fourth]: { is: "", tags: [t.Number, t.Root] },
+  [r.fifth]: { is: "", tags: [t.Number, t.Root] },
+  [r.sixth]: { is: "", tags: [t.Number, t.Root] },
+  [r.seventh]: { is: "", tags: [t.Number, t.Root] },
+  [r.eighth]: { is: "", tags: [t.Number, t.Root] },
+  [r.ninth]: { is: "", tags: [t.Number, t.Root] },
 };
 
 let timeRoot: RootDictionary = {
-  [r.time]: { is: '', tags: [t.Time] },
+  [r.time]: { is: "", tags: [t.Time] },
 
-  [r.past]: { is: '', tags: [t.Time] },
-  [r.present]: { is: '', tags: [t.Time] },
-  [r.future]: { is: '', tags: [t.Time] },
+  [r.past]: { is: "", tags: [t.Time] },
+  [r.present]: { is: "", tags: [t.Time] },
+  [r.future]: { is: "", tags: [t.Time] },
 
-  [r.second_time]: { is: '', tags: [t.Time] },
-  [r.day]: { is: '', tags: [t.Time] },
-  [r.year]: { is: '', tags: [t.Time] },
+  [r.second_time]: { is: "", tags: [t.Time] },
+  [r.day]: { is: "", tags: [t.Time] },
+  [r.year]: { is: "", tags: [t.Time] },
 };
 
 let roots: RootDictionary = {
@@ -91,33 +96,36 @@ let roots: RootDictionary = {
   [r.true]: {},
   [r.false]: {},
 
-  [r.good]: { is: '' },
-  [r.bad]: { is: '' },
+  [r.good]: { is: "" },
+  [r.bad]: { is: "" },
 
-  [r.simple]: { is: '' },
-  [r.complex]: { is: '' },
+  [r.simple]: { is: "" },
+  [r.complex]: { is: "" },
 
-  [r.none]: { is: '' },
-  [r.some]: { is: '' },
-  [r.all]: { is: '' },
+  [r.none]: { is: "" },
+  [r.some]: { is: "" },
+  [r.all]: { is: "" },
 
   [r.few]: {},
   [r.many]: {},
 
-  [r.merge]: { is: '' },
-  [r.split]: { is: '' },
+  [r.merge]: { is: "" },
+  [r.split]: { is: "" },
 
-  [r.group]: { is: '' },
-  [r.part]: { is: '' },
+  [r.connect]: { is: "" },
+  [r.branch]: { is: "" },
 
-  [r.love]: { is: '' },
-  [r.hate]: { is: '' },
+  [r.group]: { is: "" },
+  [r.part]: { is: "" },
 
-  [r.life]: { is: '' },
-  [r.death]: { is: '' },
+  [r.love]: { is: "" },
+  [r.hate]: { is: "" },
 
-  [r.prev]: { is: '' },
-  [r.next]: { is: '' },
+  [r.life]: { is: "" },
+  [r.death]: { is: "" },
+
+  [r.prev]: { is: "" },
+  [r.next]: { is: "" },
 
   [r.chaos]: {},
   [r.order]: {},

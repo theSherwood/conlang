@@ -1,15 +1,15 @@
-import { For } from 'solid-js';
+import { For } from "solid-js";
 import {
   r,
   roots,
   c,
   compounds,
-  phonemes,
-  getPhonemes,
+  morphemes,
+  getMorphemes,
   consonants1,
   vowels,
   consonants2,
-} from '../lang';
+} from "../lang";
 
 let rootsArray = Object.entries(roots);
 let compoundsArray = Object.entries(compounds);
@@ -20,11 +20,11 @@ function Index() {
       <div>
         <details>
           <summary>
-            <strong>Phonemes: {phonemes.length}</strong>
+            <strong>Morphemes: {morphemes.length}</strong>
           </summary>
           <table class="table-fixed">
             <thead>
-              <For each={[''].concat(consonants1)}>
+              <For each={[""].concat(consonants1).concat([""])}>
                 {(c1) => <th class="px-2">{c1}</th>}
               </For>
             </thead>
@@ -47,6 +47,16 @@ function Index() {
                         </td>
                       )}
                     </For>
+                    <th class="px-2">
+                      <For each={consonants2}>
+                        {(c2) => (
+                          <span>
+                            {c2 || "_"}
+                            <br />
+                          </span>
+                        )}
+                      </For>
+                    </th>
                   </tr>
                 )}
               </For>
@@ -79,10 +89,10 @@ function Index() {
             {([id, compound]) => {
               return (
                 <div>
-                  {c[id]} - {id} -
+                  {c[id]} - {id} - 
                   <For each={compound.is}>
                     {(num) => {
-                      return <span>{num}.</span>;
+                      return <span>{num < 1000 ? r[num] : c[num]}.</span>;
                     }}
                   </For>
                 </div>

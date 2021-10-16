@@ -26,6 +26,7 @@ enum Tag {
   Root = 'root',
   Compound = 'compound',
   Number = 'number',
+  Math = 'math',
   Time = 'time',
 }
 
